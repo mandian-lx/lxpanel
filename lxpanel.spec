@@ -7,7 +7,7 @@ Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	gtk+2-devel libalsa-devel
+BuildRequires:	gtk+2-devel libalsa-devel xpm-devel
 
 %description
 LXPanel is a lightweight X11 desktop panel contains:
