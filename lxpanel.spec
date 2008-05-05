@@ -1,7 +1,7 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
 Version:	0.3.5.4
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
@@ -31,7 +31,8 @@ LXPanel is a lightweight X11 desktop panel contains:
 %patch0 -p0
 
 %build
-%configure2_5x
+%configure2_5x \
+  --with-plugins="netstatus netstat volume volumealsa cpu deskno batt kbled xkb"
 %make
 
 %install
