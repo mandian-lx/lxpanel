@@ -46,7 +46,26 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-, root, root)
-%{_bindir}/*
-%{_libdir}/%name
-%{_datadir}/%name
+%{_bindir}/%{name}
+%{_bindir}/lxpanelctl
+%dir %{_libdir}/%name
+%dir %{_libdir}/%{name}/plugins
+%{_libdir}/%{name}/plugins/batt.so
+%{_libdir}/%{name}/plugins/cpu.so
+%{_libdir}/%{name}/plugins/deskno.so
+%{_libdir}/%{name}/plugins/kbled.so
+%{_libdir}/%{name}/plugins/netstat.so
+%{_libdir}/%{name}/plugins/netstatus.so
+%{_libdir}/%{name}/plugins/volumealsa.so
+%{_libdir}/%{name}/plugins/xkb.so
+%dir %{_datadir}/%name
+%dir %{_datadir}/%name/images
+%{_datadir}/%name/images/*.png
+%dir %{_datadir}/%name/images/xkb-flags
+%{_datadir}/%name/images/xkb-flags/*.png
+%dir %{_datadir}/%name/profile
+%{_datadir}/%name/profile/default
+%{_datadir}/%name/profile/default/*
+%dir %{_datadir}/%name/ui
+%{_datadir}/%name/ui/panel-pref.glade
 %{_mandir}/man1/*
