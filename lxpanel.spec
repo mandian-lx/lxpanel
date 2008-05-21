@@ -34,7 +34,7 @@ LXPanel is a lightweight X11 desktop panel contains:
 
 %build
 %configure2_5x \
-  --with-plugins="netstatus netstat volume volumealsa cpu deskno batt kbled xkb"
+  --with-plugins="netstat volume volumealsa cpu deskno batt kbled xkb"
 %make
 
 %install
