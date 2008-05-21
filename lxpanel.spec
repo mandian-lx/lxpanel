@@ -30,7 +30,7 @@ LXPanel is a lightweight X11 desktop panel contains:
 %prep
 %setup -q
 %patch0 -p0
-%patch1 -p0
+%patch1 -p0 -b .raise
 
 %build
 %configure2_5x \
