@@ -1,10 +1,7 @@
-# Else plugins won't build
-%define _disable_ld_no_undefined 1
-
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
-Version:	0.3.5.4
-Release:	%mkrel 5
+Version:	0.3.6
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
