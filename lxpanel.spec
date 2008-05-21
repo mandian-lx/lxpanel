@@ -1,3 +1,6 @@
+# Else plugins won't build
+%define _disable_ld_no_undefined 1
+
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
 Version:	0.3.5.4
