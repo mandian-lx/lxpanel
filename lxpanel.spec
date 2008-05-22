@@ -1,3 +1,6 @@
+# Else plugins won't build
+%define _disable_ld_no_undefined 1
+
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
 Version:	0.3.6
@@ -22,7 +25,7 @@ LXPanel is a lightweight X11 desktop panel contains:
 5. Digital clock
 6. Run dialog (A dialog let you type a command and run, can be called in
    external programs)
-7. Net status icon plug-in (optional, ported from gnome-netstatus-applet)
+7. Net status icon plug-in
 8. Volume control plug-in (optional, written by jserv)
 9. lxpanelctl, an external controller let you control lxpanel in other
    programs.
@@ -57,7 +60,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/plugins/deskno.so
 %{_libdir}/%{name}/plugins/kbled.so
 %{_libdir}/%{name}/plugins/netstat.so
-%{_libdir}/%{name}/plugins/netstatus.so
 %{_libdir}/%{name}/plugins/volumealsa.so
 %{_libdir}/%{name}/plugins/xkb.so
 %dir %{_datadir}/%name
