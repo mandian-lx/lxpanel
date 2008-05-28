@@ -4,12 +4,16 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
 Version:	0.3.6
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
 Patch0:		lxpanel-0.3.5.4-customization.patch
 Patch1:		lxpanel-0.3.5.4-fix-focus-on-raise.patch
+# (pt) X-MandrivaLinux-Network is needed to have skype in the menu on 2008.1
+# This patch should rather add all the missing categories (it adds only  2 so far)
+# and be sent upstream
+Patch2:		lxpanel-0.3.6-additional-categories.patch
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel xpm-devel libiw-devel
@@ -34,6 +38,7 @@ LXPanel is a lightweight X11 desktop panel contains:
 %setup -q
 %patch0 -p0
 %patch1 -p0 -b .raise
+%patch2 -p0 -b .cat
 
 %build
 %configure2_5x \
