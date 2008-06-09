@@ -1,6 +1,3 @@
-# Else plugins won't build
-%define _disable_ld_no_undefined 1
-
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
 Version:	0.3.7
@@ -74,7 +71,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%name/images/xkb-flags/*.png
 %dir %{_datadir}/%name/profile
 %{_datadir}/%name/profile/default
-%{_datadir}/%name/profile/default/*
 %dir %{_datadir}/%name/ui
 %{_datadir}/%name/ui/panel-pref.glade
 %{_mandir}/man1/*
