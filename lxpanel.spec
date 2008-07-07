@@ -1,6 +1,6 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
-Version:	0.3.8
+Version:	0.3.8.1
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Other
