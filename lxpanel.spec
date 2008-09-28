@@ -14,6 +14,7 @@ Patch2:		lxpanel-0.3.6-additional-categories.patch
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel xpm-devel libiw-devel intltool
+Suggests:	pcmanfm
 
 %description
 LXPanel is a lightweight X11 desktop panel contains:
