@@ -11,6 +11,8 @@ Patch1:		lxpanel-0.3.5.4-fix-focus-on-raise.patch
 # This patch should rather add all the missing categories (it adds only  2 so far)
 # and be sent upstream
 Patch2:		lxpanel-0.3.6-additional-categories.patch
+# fixes memory corruption in menu parsing 
+Patch3:		lxpanel-menu.patch
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel xpm-devel libiw-devel intltool
@@ -37,6 +39,7 @@ LXPanel is a lightweight X11 desktop panel contains:
 %patch0 -p1 -b .customization
 %patch1 -p0 -b .raise
 %patch2 -p0 -b .cat
+%patch3 -p1 -b .menu
 
 %build
 %configure2_5x \
