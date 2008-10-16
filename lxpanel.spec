@@ -1,7 +1,7 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
 Version:	0.3.8.1
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
@@ -15,6 +15,9 @@ Patch2:		lxpanel-0.3.6-additional-categories.patch
 Patch3:		lxpanel-menu.patch
 # (blino) fix support of Logout command in config file
 Patch4:		lxpanel-0.3.8.1-logout.patch
+# (blino) do not drop icon extension, this breaks ooo-writer3.0
+# and XDG spec already forbids extension for non-absolute paths
+Patch5:		lxpanel-0.3.8.1-iconext.patch
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel xpm-devel libiw-devel intltool
@@ -43,6 +46,7 @@ LXPanel is a lightweight X11 desktop panel contains:
 %patch2 -p0 -b .cat
 %patch3 -p1 -b .menu
 %patch4 -p1 -b .logout
+%patch5 -p1 -b .iconext
 
 %build
 %configure2_5x \
