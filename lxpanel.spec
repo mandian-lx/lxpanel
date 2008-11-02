@@ -18,6 +18,8 @@ Patch4:		lxpanel-0.3.8.1-logout.patch
 # (blino) do not drop icon extension, this breaks ooo-writer3.0
 # and XDG spec already forbids extension for non-absolute paths
 Patch5:		lxpanel-0.3.8.1-iconext.patch
+# from upstream SVN
+Patch6:		lxpanel-0.3.8.1-icon16.patch
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel xpm-devel libiw-devel intltool
@@ -47,6 +49,7 @@ LXPanel is a lightweight X11 desktop panel contains:
 %patch3 -p1 -b .menu
 %patch4 -p1 -b .logout
 %patch5 -p1 -b .iconext
+%patch6 -p2 -b .icon16
 
 %build
 %configure2_5x \
