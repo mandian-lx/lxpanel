@@ -1,29 +1,23 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
-Version:	0.3.8.1
-Release:	%mkrel 4
+Version:	0.3.99
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
 Patch0:		lxpanel-0.3.8.1-customization.patch
-Patch1:		lxpanel-0.3.5.4-fix-focus-on-raise.patch
 # (pt) X-MandrivaLinux-Network is needed to have skype in the menu on 2008.1
 # This patch should rather add all the missing categories (it adds only  2 so far)
 # and be sent upstream
 Patch2:		lxpanel-0.3.6-additional-categories.patch
-# fixes memory corruption in menu parsing 
-Patch3:		lxpanel-menu.patch
-# (blino) fix support of Logout command in config file
-Patch4:		lxpanel-0.3.8.1-logout.patch
 # (blino) do not drop icon extension, this breaks ooo-writer3.0
 # and XDG spec already forbids extension for non-absolute paths
 Patch5:		lxpanel-0.3.8.1-iconext.patch
-# from upstream SVN
-Patch6:		lxpanel-0.3.8.1-icon16.patch
-Patch7:		lxpanel-0.3.8.1-eduicon.patch
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel xpm-devel libiw-devel intltool
+BuildRequires:	menu-cache-devel docbook-to-man
+Requires:	lxmenu-data
 Suggests:	pcmanfm
 
 %description
@@ -42,20 +36,22 @@ LXPanel is a lightweight X11 desktop panel contains:
 9. lxpanelctl, an external controller let you control lxpanel in other
    programs.
 
+%package devel
+Summary: Development files for lxpanel
+Group: Graphical desktop/Other
+
+%description devel
+This package contains development files needed for building lxde plugins.
+
 %prep
-%setup -q
-%patch0 -p1 -b .customization
-%patch1 -p0 -b .raise
-%patch2 -p0 -b .cat
-%patch3 -p1 -b .menu
-%patch4 -p1 -b .logout
-%patch5 -p1 -b .iconext
-%patch6 -p2 -b .icon16
-%patch7 -p1 -b .eduicon
+%setup -q -n %name-%version
+#patch0 -p1 -b .customization
+#patch2 -p0 -b .cat
+#patch5 -p1 -b .iconext
 
 %build
 %configure2_5x \
-  --with-plugins="netstat volume volumealsa cpu deskno batt kbled xkb"
+  --with-plugins="netstat volume volumealsa cpu deskno batt kbled xkb thermal"
 %make
 
 %install
@@ -80,13 +76,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/plugins/netstat.so
 %{_libdir}/%{name}/plugins/volumealsa.so
 %{_libdir}/%{name}/plugins/xkb.so
-%dir %{_datadir}/%name
-%dir %{_datadir}/%name/images
-%{_datadir}/%name/images/*.png
-%dir %{_datadir}/%name/images/xkb-flags
-%{_datadir}/%name/images/xkb-flags/*.png
-%dir %{_datadir}/%name/profile
-%{_datadir}/%name/profile/default
-%dir %{_datadir}/%name/ui
-%{_datadir}/%name/ui/panel-pref.glade
+%{_libdir}/%{name}/plugins/thermal.so
+%{_datadir}/%name
 %{_mandir}/man1/*
+
+%files devel
+%defattr(-, root, root)
+%{_includedir}/lxpanel
+%{_libdir}/pkgconfig/lxpanel.pc
+
