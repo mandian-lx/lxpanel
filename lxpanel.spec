@@ -13,7 +13,8 @@ Patch10:	lxpanel-0.3.99-use-mandriva-xdg-menu-layout.patch
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel xpm-devel libiw-devel intltool
-BuildRequires:	menu-cache-devel docbook-to-man
+BuildRequires:	menu-cache-devel >= 0.2.1
+BuildRequires:	docbook-to-man
 Requires:	desktop-common-data
 Suggests:	pcmanfm
 
