@@ -5,7 +5,7 @@ Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
-Patch0:		lxpanel-0.3.8.1-customization.patch
+Patch0:		lxpanel-0.3.99-customization.patch
 # (pt) X-MandrivaLinux-Network is needed to have skype in the menu on 2008.1
 # This patch should rather add all the missing categories (it adds only  2 so far)
 # and be sent upstream
@@ -46,6 +46,7 @@ This package contains development files needed for building lxde plugins.
 
 %prep
 %setup -q -n %name-%version
+%patch0 -p1
 %patch10 -p0
 #patch0 -p1 -b .customization
 #patch2 -p0 -b .cat
