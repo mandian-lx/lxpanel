@@ -13,11 +13,12 @@ Patch2:		lxpanel-0.3.6-additional-categories.patch
 # (blino) do not drop icon extension, this breaks ooo-writer3.0
 # and XDG spec already forbids extension for non-absolute paths
 Patch5:		lxpanel-0.3.8.1-iconext.patch
+Patch10:	lxpanel-0.3.99-use-mandriva-xdg-menu-layout.patch
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel xpm-devel libiw-devel intltool
 BuildRequires:	menu-cache-devel docbook-to-man
-Requires:	lxmenu-data
+Requires:	desktop-common-data
 Suggests:	pcmanfm
 
 %description
@@ -45,6 +46,7 @@ This package contains development files needed for building lxde plugins.
 
 %prep
 %setup -q -n %name-%version
+%patch10 -p0
 #patch0 -p1 -b .customization
 #patch2 -p0 -b .cat
 #patch5 -p1 -b .iconext
