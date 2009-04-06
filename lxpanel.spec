@@ -2,7 +2,7 @@ Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
 Version:	0.3.999
 %define svnrel 1296
-Release:	%mkrel 2.%{svnrel}.1
+Release:	%mkrel 2.%{svnrel}.2
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version-r%{svnrel}.tar.bz2
