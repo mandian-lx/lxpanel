@@ -1,11 +1,12 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
 Version:	0.3.999
-Release:	%mkrel 1
+%define svnrel 1296
+Release:	%mkrel 2.%{svnrel}.1
 License:	GPLv2+
 Group:		Graphical desktop/Other
-Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
-Patch0:		lxpanel-0.3.99-customization.patch
+Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version-r%{svnrel}.tar.bz2
+Patch0:		lxpanel-0.3.999-customization.patch
 # (blino) do not drop icon extension, this breaks ooo-writer3.0
 # and XDG spec already forbids extension for non-absolute paths
 Patch5:		lxpanel-0.3.8.1-iconext.patch
@@ -43,15 +44,16 @@ Group: Graphical desktop/Other
 This package contains development files needed for building lxde plugins.
 
 %prep
-%setup -q -n %name-%version
+%setup -q -n %name
 %patch0 -p1
-%patch10 -p0
+#patch10 -p0
 %patch6 -p0
 #patch5 -p1 -b .iconext
 
 %build
+./autogen.sh
 %configure2_5x \
-  --with-plugins="netstat volume volumealsa cpu deskno batt kbled xkb thermal"
+  --with-plugins="volume volumealsa cpu deskno batt kbled xkb thermal"
 %make
 
 %install
@@ -73,7 +75,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/plugins/cpu.so
 %{_libdir}/%{name}/plugins/deskno.so
 %{_libdir}/%{name}/plugins/kbled.so
-%{_libdir}/%{name}/plugins/netstat.so
 %{_libdir}/%{name}/plugins/volumealsa.so
 %{_libdir}/%{name}/plugins/xkb.so
 %{_libdir}/%{name}/plugins/thermal.so
