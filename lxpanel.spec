@@ -1,11 +1,10 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
-Version:	0.3.999
-%define svnrel 1296
-Release:	%mkrel 2.%{svnrel}.2
+Version:	0.4.0
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Other
-Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version-r%{svnrel}.tar.bz2
+Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
 Patch0:		lxpanel-0.3.999-customization.patch
 # (blino) do not drop icon extension, this breaks ooo-writer3.0
 # and XDG spec already forbids extension for non-absolute paths
@@ -14,7 +13,7 @@ Patch6:		lxpanel-0.3.999-fix-str-fmt.patch
 Patch10:	lxpanel-0.3.99-use-mandriva-xdg-menu-layout.patch
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	gtk+2-devel libalsa-devel xpm-devel libiw-devel intltool
+BuildRequires:	gtk+2-devel libalsa-devel intltool
 BuildRequires:	menu-cache-devel >= 0.2.1
 BuildRequires:	docbook-to-man
 Requires:	desktop-common-data
@@ -44,14 +43,13 @@ Group: Graphical desktop/Other
 This package contains development files needed for building lxde plugins.
 
 %prep
-%setup -q -n %name
+%setup -q -n %name-%version
 %patch0 -p1
 #patch10 -p0
 %patch6 -p0
 #patch5 -p1 -b .iconext
 
 %build
-./autogen.sh
 %configure2_5x \
   --with-plugins="volume volumealsa cpu deskno batt kbled xkb thermal"
 %make
