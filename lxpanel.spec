@@ -1,11 +1,11 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
-Version:	0.4.1
+Version:	0.5.0
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
-Patch0:		lxpanel-0.3.999-customization.patch
+Patch0:		lxpanel-0.5.0-customization.patch
 # (blino) do not drop icon extension, this breaks ooo-writer3.0
 # and XDG spec already forbids extension for non-absolute paths
 Patch5:		lxpanel-0.3.8.1-iconext.patch
@@ -30,9 +30,8 @@ LXPanel is a lightweight X11 desktop panel contains:
 5. Digital clock
 6. Run dialog (A dialog let you type a command and run, can be called in
    external programs)
-7. Net status icon plug-in
-8. Volume control plug-in (optional, written by jserv)
-9. lxpanelctl, an external controller let you control lxpanel in other
+7. Volume control plug-in (optional, written by jserv)
+8. lxpanelctl, an external controller let you control lxpanel in other
    programs.
 
 %package devel
@@ -51,7 +50,7 @@ This package contains development files needed for building lxde plugins.
 
 %build
 %configure2_5x \
-  --with-plugins="volume volumealsa cpu deskno batt kbled xkb thermal"
+  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
 %make
 
 %install
