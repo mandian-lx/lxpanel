@@ -6,6 +6,8 @@ License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
 Patch0:		lxpanel-0.5.0-customization.patch
+Patch1:		lxpanel-0.5.4-ca.po.patch
+Patch2:		lxpanel-0.5.4-drop-cpu-freq.patch
 # (blino) do not drop icon extension, this breaks ooo-writer3.0
 # and XDG spec already forbids extension for non-absolute paths
 Patch5:		lxpanel-0.3.8.1-iconext.patch
@@ -44,11 +46,14 @@ This package contains development files needed for building lxde plugins.
 %prep
 %setup -q -n %name-%version
 %patch0 -p1
+%patch1 -p2
+%patch2 -p0
 #patch10 -p0
 %patch6 -p0
 #patch5 -p1 -b .iconext
 
 %build
+./autogen.sh
 %configure2_5x \
   --with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
 %make
