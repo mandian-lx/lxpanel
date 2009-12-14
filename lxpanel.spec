@@ -1,17 +1,15 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
-Version:	0.5.4
+Version:	0.5.4.1
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
 Patch0:		lxpanel-0.5.0-customization.patch
-Patch1:		lxpanel-0.5.4-ca.po.patch
 Patch2:		lxpanel-0.5.4-drop-cpu-freq.patch
 # (blino) do not drop icon extension, this breaks ooo-writer3.0
 # and XDG spec already forbids extension for non-absolute paths
 Patch5:		lxpanel-0.3.8.1-iconext.patch
-Patch6:		lxpanel-0.3.999-fix-str-fmt.patch
 Patch10:	lxpanel-0.3.99-use-mandriva-xdg-menu-layout.patch
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -46,16 +44,13 @@ This package contains development files needed for building lxde plugins.
 %prep
 %setup -q -n %name-%version
 %patch0 -p1
-%patch1 -p2
-%patch2 -p0
 #patch10 -p0
-%patch6 -p0
 #patch5 -p1 -b .iconext
 
 %build
 ./autogen.sh
 %configure2_5x \
-  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
+  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal cpufreq"
 %make
 
 %install
@@ -75,6 +70,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}/plugins
 %{_libdir}/%{name}/plugins/batt.so
 %{_libdir}/%{name}/plugins/cpu.so
+%{_libdir}/%{name}/plugins/cpufreq.so
 %{_libdir}/%{name}/plugins/deskno.so
 %{_libdir}/%{name}/plugins/kbled.so
 %{_libdir}/%{name}/plugins/volumealsa.so
