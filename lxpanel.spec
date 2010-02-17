@@ -7,9 +7,6 @@ Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
 Patch0:		lxpanel-0.5.0-customization.patch
 Patch2:		lxpanel-0.5.4-drop-cpu-freq.patch
-# (blino) do not drop icon extension, this breaks ooo-writer3.0
-# and XDG spec already forbids extension for non-absolute paths
-Patch5:		lxpanel-0.3.8.1-iconext.patch
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel intltool
@@ -43,7 +40,6 @@ This package contains development files needed for building lxde plugins.
 %prep
 %setup -q -n %name-%version
 %patch0 -p1
-#patch5 -p1 -b .iconext
 
 %build
 ./autogen.sh
