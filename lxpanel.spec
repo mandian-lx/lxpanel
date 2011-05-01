@@ -1,18 +1,24 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
 Version:	0.5.6
-Release:	%mkrel 1
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
 Patch0:		lxpanel-0.5.0-customization.patch
-Patch2:		lxpanel-0.5.4-drop-cpu-freq.patch
+Patch3:		batt_status.patch
+Patch4:		configure_desktop_number.patch
+Patch7:		lxpanel-0.5.4-drop-cpu-freq.patch
+Patch8:		missing_glades.patch
+Patch9:		redefine-alarm-variable.patch
+Patch10:	lxpanel-icons.patch
+
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel intltool
 BuildRequires:	menu-cache-devel >= 0.2.1
 BuildRequires:	docbook-to-man
-Requires:	desktop-common-data
+Requires:	desktop-common-data obconf
 Suggests:	pcmanfm
 
 %description
@@ -40,11 +46,18 @@ This package contains development files needed for building lxde plugins.
 %prep
 %setup -q -n %name-%version
 %patch0 -p1
+%patch3 -p1
+%patch4 -p1
+%patch7 -p0
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 %build
 ./autogen.sh
 %configure2_5x \
-  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal cpufreq"
+  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
+  
 %make
 
 %install
@@ -64,7 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}/plugins
 %{_libdir}/%{name}/plugins/batt.so
 %{_libdir}/%{name}/plugins/cpu.so
-%{_libdir}/%{name}/plugins/cpufreq.so
+#{_libdir}/%{name}/plugins/cpufreq.so
 %{_libdir}/%{name}/plugins/deskno.so
 %{_libdir}/%{name}/plugins/kbled.so
 %{_libdir}/%{name}/plugins/volumealsa.so
