@@ -22,7 +22,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel intltool
 BuildRequires:	menu-cache-devel >= 0.2.1
 BuildRequires:	docbook-to-man
-Requires:	desktop-common-data obconf
+Requires:	desktop-common-data obconf libwcnk
 Suggests:	pcmanfm
 
 %description
