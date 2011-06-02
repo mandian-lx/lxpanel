@@ -76,8 +76,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{int_name}/plugins/volumealsa.so
 %{_libdir}/%{int_name}/plugins/xkb.so
 %{_libdir}/%{int_name}/plugins/thermal.so
-%{_libdir}/%{int_name}/plugins/monitors.so
-%{_libdir}/%{int_name}/plugins/wnckpager.so
 %{_datadir}/%int_name
 %{_mandir}/man1/*
 
