@@ -2,7 +2,7 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	%int_name
 Version:	0.5.6
-Release:	%mkrel 4
+Release:	%mkrel 6
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	%int_name-%version.tar.gz
