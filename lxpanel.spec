@@ -64,32 +64,31 @@ This package contains development files needed for building lxde plugins.
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 
-%{find_lang} %{int_name}
+%{find_lang} %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f %{int_name}.lang
+%files -f %{name}.lang
 %defattr(-, root, root)
-%{_bindir}/%{int_name}
+%{_bindir}/%{name}
 %{_bindir}/lxpanelctl
-%dir %{_libdir}/%name
-%dir %{_libdir}/%{int_name}/plugins
-%{_libdir}/%{int_name}/plugins/batt.so
-%{_libdir}/%{int_name}/plugins/cpu.so
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/plugins
+%{_libdir}/%{name}/plugins/batt.so
+%{_libdir}/%{name}/plugins/cpu.so
 #{_libdir}/%{name}/plugins/cpufreq.so
-%{_libdir}/%{int_name}/plugins/deskno.so
-%{_libdir}/%{int_name}/plugins/kbled.so
-%{_libdir}/%{int_name}/plugins/volumealsa.so
-%{_libdir}/%{int_name}/plugins/xkb.so
-%{_libdir}/%{int_name}/plugins/thermal.so
-%{_libdir}/%{int_name}/plugins/monitors.so
-%{_libdir}/%{int_name}/plugins/wnckpager.so
-%{_datadir}/%name
+%{_libdir}/%{name}/plugins/deskno.so
+%{_libdir}/%{name}/plugins/kbled.so
+%{_libdir}/%{name}/plugins/volumealsa.so
+%{_libdir}/%{name}/plugins/xkb.so
+%{_libdir}/%{name}/plugins/thermal.so
+%{_libdir}/%{name}/plugins/monitors.so
+%{_libdir}/%{name}/plugins/wnckpager.so
+%{_datadir}/%{name}
 %{_mandir}/man1/*
 
 %files devel
 %defattr(-, root, root)
 %{_includedir}/lxpanel
 %{_libdir}/pkgconfig/lxpanel.pc
-
