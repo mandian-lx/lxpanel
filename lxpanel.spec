@@ -4,20 +4,24 @@ Version:	0.5.6
 Release:	%mkrel 8
 License:	GPLv2+
 Group:		Graphical desktop/Other
-Source0: 	%name-%version.tar.gz
+Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
+Source1:	volume_icon.tar.gz
 Patch0:		lxpanel-0.5.0-customization.patch
-#Patch3:		batt_status.patch
+Patch3:		batt_status.patch
 Patch4:		configure_desktop_number.patch
-Patch7:		lxpanel-0.5.4-drop-cpu-freq.patch
-#Patch8:		missing_glades.patch
-#Patch9:		redefine-alarm-variable.patch
+Patch7:		lxpanel-0.5.6-plugin_add_drop.patch
+Patch8:		missing_glades.patch
+Patch9:		redefine-alarm-variable.patch
 Patch10:	lxpanel-icons.patch
+Patch11:	lxpanel-0.5.6-volumeicon.patch
+Patch12:	lxpanel-0.5.6-clock.patch
+Patch13:	lxpanel-0.5.6-wnckplugin.patch
 
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel intltool
 BuildRequires:	menu-cache-devel >= 0.2.1
-BuildRequires:	docbook-to-man libwnck-1-devel docbook-dtd412-xml
+BuildRequires:	docbook-to-man
 Requires:	desktop-common-data obconf
 Suggests:	pcmanfm
 
@@ -44,19 +48,22 @@ Group: Graphical desktop/Other
 This package contains development files needed for building lxde plugins.
 
 %prep
-%setup -q -n %name-%version
+%setup -q -n %name-%version -a1
 %patch0 -p1
-#patch3 -p1
+%patch3 -p1
 %patch4 -p1
 %patch7 -p0
-#patch8 -p1
-#patch9 -p1
+%patch8 -p1
+%patch9 -p1
 %patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
 
 %build
 ./autogen.sh
-%configure \
-  --with-plugins="wnckpager monitors volumealsa cpu deskno batt kbled xkb thermal"
+%configure2_5x \
+  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
   
 %make
 
@@ -73,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %{_bindir}/%{name}
 %{_bindir}/lxpanelctl
-%dir %{_libdir}/%{name}
+%dir %{_libdir}/%name
 %dir %{_libdir}/%{name}/plugins
 %{_libdir}/%{name}/plugins/batt.so
 %{_libdir}/%{name}/plugins/cpu.so
@@ -83,12 +90,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/plugins/volumealsa.so
 %{_libdir}/%{name}/plugins/xkb.so
 %{_libdir}/%{name}/plugins/thermal.so
-%{_libdir}/%{name}/plugins/monitors.so
-%{_libdir}/%{name}/plugins/wnckpager.so
-%{_datadir}/%{name}
+%{_datadir}/%name
 %{_mandir}/man1/*
 
 %files devel
 %defattr(-, root, root)
 %{_includedir}/lxpanel
 %{_libdir}/pkgconfig/lxpanel.pc
+
