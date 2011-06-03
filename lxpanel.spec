@@ -2,18 +2,23 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	%int_name
 Version:	0.5.6
-Release:	%mkrel 6
+Release:	%mkrel 7
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	%int_name-%version.tar.gz
 Patch0:		lxpanel-0.5.0-customization.patch
+#Patch3:		batt_status.patch
 Patch4:		configure_desktop_number.patch
+Patch7:		lxpanel-0.5.4-drop-cpu-freq.patch
+#Patch8:		missing_glades.patch
+#Patch9:		redefine-alarm-variable.patch
 Patch10:	lxpanel-icons.patch
 
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel intltool
 BuildRequires:	menu-cache-devel >= 0.2.1
+BuildRequires:	docbook-to-man libwnck-1-devel docbook-dtd412-xml
 Requires:	desktop-common-data obconf
 Suggests:	pcmanfm
 Obsoletes:	%int_name
@@ -43,13 +48,17 @@ This package contains development files needed for building lxde plugins.
 %prep
 %setup -q -n %int_name-%version
 %patch0 -p1
+#patch3 -p1
 %patch4 -p1
+%patch7 -p0
+#patch8 -p1
+#patch9 -p1
 %patch10 -p1
 
 %build
 ./autogen.sh
 %configure \
-  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
+  --with-plugins="wnckpager monitors volumealsa cpu deskno batt kbled xkb thermal"
   
 %make
 
@@ -76,6 +85,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{int_name}/plugins/volumealsa.so
 %{_libdir}/%{int_name}/plugins/xkb.so
 %{_libdir}/%{int_name}/plugins/thermal.so
+%{_libdir}/%{int_name}/plugins/monitors.so
+%{_libdir}/%{int_name}/plugins/wnckpager.so
 %{_datadir}/%int_name
 %{_mandir}/man1/*
 
@@ -83,3 +94,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %{_includedir}/lxpanel
 %{_libdir}/pkgconfig/lxpanel.pc
+
