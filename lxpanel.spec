@@ -1,11 +1,10 @@
-%define int_name lxpanel
 Summary:	Lightweight X11 desktop panel based on fbpanel
-Name:	  	%int_name
+Name:	  	lxpanel
 Version:	0.5.6
-Release:	%mkrel 7
+Release:	%mkrel 8
 License:	GPLv2+
 Group:		Graphical desktop/Other
-Source0: 	%int_name-%version.tar.gz
+Source0: 	%name-%version.tar.gz
 Patch0:		lxpanel-0.5.0-customization.patch
 #Patch3:		batt_status.patch
 Patch4:		configure_desktop_number.patch
@@ -21,7 +20,6 @@ BuildRequires:	menu-cache-devel >= 0.2.1
 BuildRequires:	docbook-to-man libwnck-1-devel docbook-dtd412-xml
 Requires:	desktop-common-data obconf
 Suggests:	pcmanfm
-Obsoletes:	%int_name
 
 %description
 LXPanel is a lightweight X11 desktop panel contains:
@@ -46,7 +44,7 @@ Group: Graphical desktop/Other
 This package contains development files needed for building lxde plugins.
 
 %prep
-%setup -q -n %int_name-%version
+%setup -q -n %name-%version
 %patch0 -p1
 #patch3 -p1
 %patch4 -p1
@@ -75,7 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %{_bindir}/%{int_name}
 %{_bindir}/lxpanelctl
-%dir %{_libdir}/%int_name
+%dir %{_libdir}/%name
 %dir %{_libdir}/%{int_name}/plugins
 %{_libdir}/%{int_name}/plugins/batt.so
 %{_libdir}/%{int_name}/plugins/cpu.so
@@ -87,7 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{int_name}/plugins/thermal.so
 %{_libdir}/%{int_name}/plugins/monitors.so
 %{_libdir}/%{int_name}/plugins/wnckpager.so
-%{_datadir}/%int_name
+%{_datadir}/%name
 %{_mandir}/man1/*
 
 %files devel
