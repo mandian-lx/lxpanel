@@ -21,7 +21,7 @@ URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel intltool
 BuildRequires:	menu-cache-devel >= 0.2.1
-BuildRequires:	docbook-to-man
+BuildRequires:	docbook-to-man libwnck-1-devel docbook-dtd412-xml
 Requires:	desktop-common-data obconf
 Suggests:	pcmanfm
 
