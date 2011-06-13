@@ -49,7 +49,7 @@ This package contains development files needed for building lxde plugins.
 
 %prep
 %setup -q -n %name-%version -a1
-%patch0 -p1
+%patch0 -p0
 %patch3 -p1
 %patch4 -p1
 %patch7 -p0
