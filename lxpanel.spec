@@ -9,7 +9,6 @@ Source1:	volume_icon.tar.gz
 Patch0:		lxpanel-0.5.0-customization.patch
 Patch3:		batt_status.patch
 Patch4:		configure_desktop_number.patch
-Patch7:		lxpanel-0.5.6-plugin_add_drop.patch
 Patch8:		missing_glades.patch
 Patch9:		redefine-alarm-variable.patch
 Patch10:	lxpanel-icons.patch
@@ -20,7 +19,7 @@ URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel intltool
 BuildRequires:	menu-cache-devel >= 0.2.1
-BuildRequires:	docbook-to-man libwnck-1-devel docbook-dtd412-xml
+BuildRequires:	docbook-to-man docbook-dtd412-xml
 Requires:	desktop-common-data obconf
 Suggests:	pcmanfm
 Conflicts:	lxpanelx
@@ -52,7 +51,6 @@ This package contains development files needed for building lxde plugins.
 %patch0 -p0
 %patch3 -p1
 %patch4 -p1
-%patch7 -p0
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
