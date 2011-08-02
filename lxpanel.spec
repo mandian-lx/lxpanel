@@ -63,7 +63,7 @@ This package contains development files needed for building lxde plugins.
 #patch14 -p1
 
 %build
-./autogen.sh
+#./autogen.sh
 %configure2_5x \
   --with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
   
