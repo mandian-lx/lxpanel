@@ -1,22 +1,15 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
 Version:	0.5.8
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
 Source1:	volume_icon.tar.gz
 Patch0:		lxpanel-0.5.0-customization.patch
-#Patch3:		batt_status.patch
-Patch4:		configure_desktop_number.patch
-#Patch8:		missing_glades.patch
-#Patch9:		redefine-alarm-variable.patch
-#Patch10:	lxpanel-icons.patch
-#Patch11:	lxpanel-0.5.6-volumeicon.patch
-#Patch12:	lxpanel-0.5.6-clock.patch
-# fix termal device path and crash with menu select
-#Patch13:	fix_3080861.patch
-#Patch14:	fix3342792.patch
+Patch1:		configure_desktop_number.patch
+Patch2:		lxpanel-taskbar-no-crash.patch
+Patch3:		lxpanel-0.5.8-alt-a-f2-fix.patch
 
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -52,15 +45,9 @@ This package contains development files needed for building lxde plugins.
 %prep
 %setup -q -n %name-%version -a1
 %patch0 -p0
-#patch3 -p1
-%patch4 -p1
-#patch8 -p1
-#patch9 -p1
-#patch10 -p1
-#patch11 -p1
-#patch12 -p1
-#patch13 -p1
-#patch14 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 #./autogen.sh
