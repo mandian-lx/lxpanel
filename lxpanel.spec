@@ -1,16 +1,16 @@
+%define Werror_cflags %nil
+
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
 Version:	0.5.8
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
 Source1:	volume_icon.tar.gz
 Patch0:		lxpanel-0.5.0-customization.patch
 Patch1:		configure_desktop_number.patch
-Patch2:		lxpanel-taskbar-no-crash.patch
 Patch3:		lxpanel-0.5.8-alt-a-f2-fix.patch
-
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel intltool
@@ -46,13 +46,12 @@ This package contains development files needed for building lxde plugins.
 %setup -q -n %name-%version -a1
 %patch0 -p0
 %patch1 -p1
-%patch2 -p1
 %patch3 -p1
 
 %build
 #./autogen.sh
 %configure2_5x \
-  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
+  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal netstatus"
   
 %make
 
@@ -79,6 +78,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/plugins/volumealsa.so
 %{_libdir}/%{name}/plugins/xkb.so
 %{_libdir}/%{name}/plugins/thermal.so
+%{_libdir}/%{name}/plugins/netstatus.so
+	
 %{_datadir}/%name
 %{_mandir}/man1/*
 
