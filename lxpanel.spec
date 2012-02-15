@@ -50,7 +50,7 @@ This package contains development files needed for building lxde plugins.
 %build
 #./autogen.sh
 %configure2_5x \
---with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
+--with-plugins="cpu deskno batt kbled xkb thermal"
 
 #  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
   
