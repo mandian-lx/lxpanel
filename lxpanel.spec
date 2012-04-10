@@ -3,7 +3,7 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
 Version:	0.5.8
-Release:	%mkrel 6
+Release:	%mkrel 7
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
@@ -14,6 +14,7 @@ Patch3:		lxpanel-0.5.8-alt-a-f2-fix.patch
 URL:		http://lxde.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel intltool
+BuildRequires:	glib2-devel
 BuildRequires:	menu-cache-devel >= 0.2.1
 Requires:	desktop-common-data
 Conflicts:	lxpanelx
