@@ -7,8 +7,8 @@ Group:		Graphical desktop/Other
 Source0: 	%name-%version.tar.bz2
 Source1:	volume_icon.tar.gz
 Source3:	lxpanel-userdirs-config.tar
-#Patch0:	lxpanel-0.5.0-customization.patch
-Patch4:		configure_desktop_number.patch
+Patch1:		configure_desktop_number.patch
+Patch2:		lxpanel-0.5.9-automake1.12.patch
 
 URL:		http://code.google.com/p/mandriva-lxde
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -45,8 +45,7 @@ This package contains development files needed for building lxde plugins.
 
 %prep
 %setup -q -n %name-%version -a1 -a3
-#patch0 -p1
-%patch4 -p1
+%apply_patches
 
 %build
 ./autogen.sh
@@ -63,7 +62,6 @@ install -m 0755 lxpanel-userdirs-config %{buildroot}%{_bindir}
 %{find_lang} %{name}
 
 %files -f %{name}.lang
-%defattr(-, root, root)
 %{_bindir}/%{name}
 %{_bindir}/lxpanelctl
 %{_bindir}/lxpanel-userdirs-config
