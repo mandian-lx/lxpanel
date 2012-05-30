@@ -15,6 +15,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gtk+2-devel libalsa-devel intltool
 BuildRequires:	menu-cache-devel >= 0.2.1
 BuildRequires:	docbook-to-man docbook-dtd412-xml
+BuildRequires:	gdk-pixbuf-xlib
 Requires:	desktop-common-data obconf
 Suggests:	pcmanfm
 Conflicts:	lxpanelx
