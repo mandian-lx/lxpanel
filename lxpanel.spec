@@ -11,6 +11,8 @@ Patch1:		configure_desktop_number.patch
 Patch2:		lxpanel-0.5.10-automake1.12.patch
 Patch3:		lxpanel-0.5.10-linkage.patch
 Patch4:		lxpanel-0.5.10-string-format-fixes.patch
+# use nm-connection-editor to edit network connections
+Patch5:		lxpanel-0.3.8.1-nm-connection-editor.patch
 URL:		http://code.google.com/p/mandriva-lxde
 BuildRequires:	gtk+2-devel
 BuildRequires:	pkgconfig(alsa)
