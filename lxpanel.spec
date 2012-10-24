@@ -40,11 +40,11 @@ LXPanel is a lightweight X11 desktop panel contains:
 
 This version based on lxpanelx 0.6.0 alpha version
 
-%package devel
+%package	devel
 Summary:	Development files for lxpanel
 Group:		Graphical desktop/Other
 
-%description devel
+%description	devel
 This package contains development files needed for building lxde plugins.
 
 %prep
@@ -59,7 +59,6 @@ This package contains development files needed for building lxde plugins.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 install -m 0755 lxpanel-userdirs-config %{buildroot}%{_bindir}
 
@@ -85,4 +84,3 @@ install -m 0755 lxpanel-userdirs-config %{buildroot}%{_bindir}
 %files devel
 %{_includedir}/lxpanel
 %{_libdir}/pkgconfig/lxpanel.pc
-
