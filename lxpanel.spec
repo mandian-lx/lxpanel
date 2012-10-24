@@ -14,16 +14,16 @@ Patch4:		lxpanel-0.5.10-string-format-fixes.patch
 # use nm-connection-editor to edit network connections
 Patch5:		lxpanel-0.3.8.1-nm-connection-editor.patch
 URL:		http://code.google.com/p/mandriva-lxde
-BuildRequires:	gtk+2-devel
+BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(gdk-pixbuf-xlib-2.0)
-BuildRequires:  pkgconfig(xpm)
-BuildRequires:  pkgconfig(libstartup-notification-1.0)
+BuildRequires:	pkgconfig(xpm)
+BuildRequires:	pkgconfig(libstartup-notification-1.0)
 # required for netstatus plugin
-BuildRequires:  libiw-devel
-BuildRequires:  pkgconfig(libwnck-1.0)
+BuildRequires:	libiw-devel
+BuildRequires:	pkgconfig(libwnck-1.0)
 BuildRequires:	intltool
-BuildRequires:  pkgconfig(libmenu-cache) >= 0.3.0
+BuildRequires:	pkgconfig(libmenu-cache) >= 0.3.0
 BuildRequires:	docbook-to-man
 BuildRequires:	docbook-dtd412-xml
 Requires:	desktop-common-data
