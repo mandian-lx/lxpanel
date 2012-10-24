@@ -46,8 +46,6 @@ LXPanel is a lightweight X11 desktop panel contains:
 8. lxpanelctl, an external controller let you control lxpanel in other
    programs.
 
-This version based on lxpanelx 0.6.0 alpha version
-
 %package	devel
 Summary:	Development files for lxpanel
 Group:		Graphical desktop/Other
