@@ -1,10 +1,10 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
-Name:	  	lxpanel
+Name:		lxpanel
 Version:	0.5.10
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
-Source0: 	%{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}.tar.gz
 Source1:	volume_icon.tar.gz
 Source3:	lxpanel-userdirs-config.tar
 Patch1:		configure_desktop_number.patch
@@ -28,6 +28,7 @@ BuildRequires:	intltool
 BuildRequires:	pkgconfig(libmenu-cache) >= 0.3.0
 BuildRequires:	docbook-to-man
 BuildRequires:	docbook-dtd412-xml
+BuildRequires:	pkgconfig(indicator-0.4)
 Requires:	desktop-common-data
 Requires:	obconf
 Suggests:	pcmanfm
@@ -61,7 +62,8 @@ This package contains development files needed for building lxde plugins.
 ./autogen.sh
 
 %build
-%configure2_5x	--with-plugins=all
+%configure2_5x	--with-plugins=all \
+		--enable-indicator-support
 %make
 
 %install
@@ -80,6 +82,7 @@ install -m755 lxpanel-userdirs-config %{buildroot}%{_bindir}
 %{_libdir}/%{name}/plugins/cpu.so
 %{_libdir}/%{name}/plugins/cpufreq.so
 %{_libdir}/%{name}/plugins/deskno.so
+%{_libdir}/%{name}/plugins/indicator.so
 %{_libdir}/%{name}/plugins/kbled.so
 %{_libdir}/%{name}/plugins/monitors.so
 %{_libdir}/%{name}/plugins/netstat.so
