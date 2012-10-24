@@ -13,6 +13,8 @@ Patch3:		lxpanel-0.5.10-linkage.patch
 Patch4:		lxpanel-0.5.10-string-format-fixes.patch
 # use nm-connection-editor to edit network connections
 Patch5:		lxpanel-0.3.8.1-nm-connection-editor.patch
+# https://bugzilla.redhat.com/show_bug.cgi?id=746063
+Patch6:		lxpanel-0.5.6-Fix-pager-scroll.patch
 URL:		http://code.google.com/p/mandriva-lxde
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(alsa)
