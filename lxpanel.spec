@@ -1,19 +1,20 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
-Version:	0.5.9
-Release:	7
+Version:	0.5.10
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
-Source0: 	%{name}-%{version}.tar.bz2
+Source0: 	%{name}-%{version}.tar.gz
 Source1:	volume_icon.tar.gz
 Source3:	lxpanel-userdirs-config.tar
 Patch1:		configure_desktop_number.patch
-Patch2:		lxpanel-0.5.9-automake1.12.patch
-Patch3:		lxpanel-0.5.9-linkage.patch
+Patch2:		lxpanel-0.5.10-automake1.12.patch
+Patch3:		lxpanel-0.5.10-linkage.patch
 URL:		http://code.google.com/p/mandriva-lxde
 BuildRequires:	gtk+2-devel
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(gdk-pixbuf-xlib-2.0)
+BuildRequires:  pkgconfig(libwnck-1.0)
 BuildRequires:	intltool
 BuildRequires:	menu-cache-devel >= 0.2.1
 BuildRequires:	docbook-to-man
@@ -53,8 +54,7 @@ This package contains development files needed for building lxde plugins.
 ./autogen.sh
 
 %build
-%configure2_5x \
-  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
+%configure2_5x	--with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
 
 %make
 
