@@ -10,13 +10,18 @@ Source3:	lxpanel-userdirs-config.tar
 Patch1:		configure_desktop_number.patch
 Patch2:		lxpanel-0.5.10-automake1.12.patch
 Patch3:		lxpanel-0.5.10-linkage.patch
+Patch4:		lxpanel-0.5.10-string-format-fixes.patch
 URL:		http://code.google.com/p/mandriva-lxde
 BuildRequires:	gtk+2-devel
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(gdk-pixbuf-xlib-2.0)
+BuildRequires:  pkgconfig(xpm)
+BuildRequires:  pkgconfig(libstartup-notification-1.0)
+# required for netstatus plugin
+BuildRequires:  libiw-devel
 BuildRequires:  pkgconfig(libwnck-1.0)
 BuildRequires:	intltool
-BuildRequires:	menu-cache-devel >= 0.2.1
+BuildRequires:  pkgconfig(libmenu-cache) >= 0.3.0
 BuildRequires:	docbook-to-man
 BuildRequires:	docbook-dtd412-xml
 Requires:	desktop-common-data
@@ -54,13 +59,12 @@ This package contains development files needed for building lxde plugins.
 ./autogen.sh
 
 %build
-%configure2_5x	--with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
-
+%configure2_5x	--with-plugins=all
 %make
 
 %install
 %makeinstall_std
-install -m 0755 lxpanel-userdirs-config %{buildroot}%{_bindir}
+install -m755 lxpanel-userdirs-config %{buildroot}%{_bindir}
 
 %find_lang %{name}
 
@@ -72,12 +76,16 @@ install -m 0755 lxpanel-userdirs-config %{buildroot}%{_bindir}
 %dir %{_libdir}/%{name}/plugins
 %{_libdir}/%{name}/plugins/batt.so
 %{_libdir}/%{name}/plugins/cpu.so
+%{_libdir}/%{name}/plugins/cpufreq.so
 %{_libdir}/%{name}/plugins/deskno.so
 %{_libdir}/%{name}/plugins/kbled.so
+%{_libdir}/%{name}/plugins/monitors.so
+%{_libdir}/%{name}/plugins/netstat.so
+%{_libdir}/%{name}/plugins/netstatus.so
+%{_libdir}/%{name}/plugins/thermal.so
 %{_libdir}/%{name}/plugins/volumealsa.so
 %{_libdir}/%{name}/plugins/xkb.so
-%{_libdir}/%{name}/plugins/thermal.so
-%{_libdir}/%{name}/iface-info
+%{_libdir}/%{name}/plugins/wnckpager.so
 %{_datadir}/%{name}
 %{_mandir}/man1/*
 
