@@ -1,34 +1,26 @@
 Summary:	Lightweight X11 desktop panel based on fbpanel
-Name:		lxpanel
-Version:	0.5.10
-Release:	1
+Name:	  	lxpanel
+Version:	0.5.9
+Release:	9
 License:	GPLv2+
 Group:		Graphical desktop/Other
-Source0:	%{name}-%{version}.tar.gz
+URL:		http://code.google.com/p/mandriva-lxde
+Source0: 	%{name}-%{version}.tar.bz2
 Source1:	volume_icon.tar.gz
 Source3:	lxpanel-userdirs-config.tar
 Patch1:		configure_desktop_number.patch
-Patch2:		lxpanel-0.5.10-automake1.12.patch
-Patch3:		lxpanel-0.5.10-linkage.patch
-Patch4:		lxpanel-0.5.10-string-format-fixes.patch
-# use nm-connection-editor to edit network connections
-Patch5:		lxpanel-0.3.8.1-nm-connection-editor.patch
-# https://bugzilla.redhat.com/show_bug.cgi?id=746063
-Patch6:		lxpanel-0.5.6-Fix-pager-scroll.patch
-URL:		http://code.google.com/p/mandriva-lxde
+Patch2:		lxpanel-0.5.9-automake1.12.patch
+Patch3:		lxpanel-0.5.9-linkage.patch
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(gdk-pixbuf-xlib-2.0)
-BuildRequires:	pkgconfig(xpm)
-BuildRequires:	pkgconfig(libstartup-notification-1.0)
-# required for netstatus plugin
-BuildRequires:	libiw-devel
 BuildRequires:	pkgconfig(libwnck-1.0)
 BuildRequires:	intltool
-BuildRequires:	pkgconfig(libmenu-cache) >= 0.3.0
+BuildRequires:	menu-cache-devel >= 0.2.1
+BuildRequires:	xsltproc
 BuildRequires:	docbook-to-man
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	pkgconfig(indicator-0.4)
+BuildRequires:	docbook-style-xsl
 Requires:	desktop-common-data
 Requires:	obconf
 Suggests:	pcmanfm
@@ -49,26 +41,30 @@ LXPanel is a lightweight X11 desktop panel contains:
 8. lxpanelctl, an external controller let you control lxpanel in other
    programs.
 
-%package	devel
+This version based on lxpanelx 0.6.0 alpha version
+
+%package devel
 Summary:	Development files for lxpanel
 Group:		Graphical desktop/Other
 
-%description	devel
+%description devel
 This package contains development files needed for building lxde plugins.
 
 %prep
 %setup -q -a1 -a3
 %apply_patches
-./autogen.sh
 
 %build
-%configure2_5x	--with-plugins=all \
-		--enable-indicator-support
+./autogen.sh
+%configure2_5x \
+  --enable-man \
+  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
+
 %make
 
 %install
 %makeinstall_std
-install -m755 lxpanel-userdirs-config %{buildroot}%{_bindir}
+install -m 0755 lxpanel-userdirs-config %{buildroot}%{_bindir}
 
 %find_lang %{name}
 
@@ -80,20 +76,15 @@ install -m755 lxpanel-userdirs-config %{buildroot}%{_bindir}
 %dir %{_libdir}/%{name}/plugins
 %{_libdir}/%{name}/plugins/batt.so
 %{_libdir}/%{name}/plugins/cpu.so
-%{_libdir}/%{name}/plugins/cpufreq.so
 %{_libdir}/%{name}/plugins/deskno.so
-%{_libdir}/%{name}/plugins/indicator.so
 %{_libdir}/%{name}/plugins/kbled.so
-%{_libdir}/%{name}/plugins/monitors.so
-%{_libdir}/%{name}/plugins/netstat.so
-%{_libdir}/%{name}/plugins/netstatus.so
-%{_libdir}/%{name}/plugins/thermal.so
 %{_libdir}/%{name}/plugins/volumealsa.so
 %{_libdir}/%{name}/plugins/xkb.so
-%{_libdir}/%{name}/plugins/wnckpager.so
+%{_libdir}/%{name}/plugins/thermal.so
 %{_datadir}/%{name}
 %{_mandir}/man1/*
 
 %files devel
 %{_includedir}/lxpanel
 %{_libdir}/pkgconfig/lxpanel.pc
+

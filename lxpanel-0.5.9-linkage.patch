@@ -1,0 +1,11 @@
+diff -urN lxpanel-0.5.9/configure.ac lxpanel-0.5.9-patched/configure.ac
+--- lxpanel-0.5.9/configure.ac	2012-05-23 07:43:54.000000000 +1100
++++ lxpanel-0.5.9-patched/configure.ac	2012-12-03 14:27:26.374208976 +1100
+@@ -40,6 +40,7 @@
+ pkg_modules="$pkg_modules \
+              gio-unix-2.0 \
+              gthread-2.0 \
++             gmodule-2.0 \
+              libmenu-cache"
+ #             libstartup-notification-1.0"
+ PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])

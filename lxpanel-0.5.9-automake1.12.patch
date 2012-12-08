@@ -1,0 +1,41 @@
+diff -urN lxpanel-0.5.9/autogen.sh lxpanel-0.5.9-patched/autogen.sh
+--- lxpanel-0.5.9/autogen.sh	2012-05-23 07:43:54.000000000 +1100
++++ lxpanel-0.5.9-patched/autogen.sh	2012-12-03 14:17:18.506998531 +1100
+@@ -2,16 +2,6 @@
+ AC_VERSION=
+ 
+ AUTOMAKE=${AUTOMAKE:-automake}
+-AM_INSTALLED_VERSION=$($AUTOMAKE --version | sed -e '2,$ d' -e 's/.* \([0-9]*\.[0-9]*\).*/\1/')
+-
+-if [ "$AM_INSTALLED_VERSION" != "1.10" \
+-    -a "$AM_INSTALLED_VERSION" != "1.11" ];then
+-	echo
+-	echo "You must have automake > 1.10 or 1.11 installed to compile lxpanel."
+-	echo "Install the appropriate package for your distribution,"
+-	echo "or get the source tarball at http://ftp.gnu.org/gnu/automake/"
+-	exit 1
+-fi
+ 
+ set -x
+ 
+diff -urN lxpanel-0.5.9/configure.ac lxpanel-0.5.9-patched/configure.ac
+--- lxpanel-0.5.9/configure.ac	2012-05-23 07:43:54.000000000 +1100
++++ lxpanel-0.5.9-patched/configure.ac	2012-12-03 14:21:35.444106985 +1100
+@@ -1,6 +1,6 @@
+ AC_PREREQ(2.53)
+ AC_INIT(lxpanel, 0.5.9, http://lxde.org/)
+-AM_INIT_AUTOMAKE([1.11 -Wall -Werror foreign])
++AM_INIT_AUTOMAKE([1.12 -Wall])
+ AC_CONFIG_HEADER([config.h])
+ 
+ # Support silent build rules. Disable by either passing --disable-silent-rules
+@@ -15,7 +15,9 @@
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_INTLTOOL(, [no-xml])
++m4_pattern_allow([AM_PROG_CC_C_O])
+ AM_PROG_CC_C_O
++AM_PROG_LIBTOOL
+ 
+ #Initialize libtool
+ LT_PREREQ([2.2])
