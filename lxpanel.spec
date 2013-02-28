@@ -1,16 +1,25 @@
+%define git 0
+%define prerel 63ffd68
+%define ver 0.5.12
+%define gitday 20121312
+
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:	  	lxpanel
-Version:	0.5.9
-Release:	9
+Release:	1
+%if %git
+Version:	%{ver}.git%{gitday}
+Source0:	%{name}-%{prerel}.tar.gz
+%else
+Version:	%{ver}
+Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
+%endif
 License:	GPLv2+
 Group:		Graphical desktop/Other
-URL:		http://code.google.com/p/mandriva-lxde
-Source0: 	%{name}-%{version}.tar.bz2
-Source1:	volume_icon.tar.gz
-Source3:	lxpanel-userdirs-config.tar
+URL:		http://lxde.sourceforge.net/
+#Source1:	volume_icon.tar.gz
 Patch1:		configure_desktop_number.patch
-Patch2:		lxpanel-0.5.9-automake1.12.patch
-Patch3:		lxpanel-0.5.9-linkage.patch
+#Patch2:		lxpanel-0.5.10-automake1.12.patch
+#Patch3:		lxpanel-0.5.9-linkage.patch
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(gdk-pixbuf-xlib-2.0)
@@ -51,27 +60,28 @@ Group:		Graphical desktop/Other
 This package contains development files needed for building lxde plugins.
 
 %prep
-%setup -q -a1 -a3
+%if %git
+%setup -q -n %{name}-%{prerel} -a1
+%else
+%setup -q
+%endif
 %apply_patches
 
 %build
 ./autogen.sh
 %configure2_5x \
   --enable-man \
-  --with-plugins="volumealsa cpu deskno batt kbled xkb thermal"
-
+  --with-plugins="cpu batt kbled xkb thermal deskno volumealsa"
 %make
 
 %install
 %makeinstall_std
-install -m 0755 lxpanel-userdirs-config %{buildroot}%{_bindir}
 
 %find_lang %{name}
 
 %files -f %{name}.lang
 %{_bindir}/%{name}
 %{_bindir}/lxpanelctl
-%{_bindir}/lxpanel-userdirs-config
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
 %{_libdir}/%{name}/plugins/batt.so
