@@ -30,6 +30,7 @@ BuildRequires:	xsltproc
 BuildRequires:	docbook-to-man
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-style-xsl
+BuildRequires:	automake
 Requires:	desktop-common-data
 Requires:	obconf
 Suggests:	pcmanfm
