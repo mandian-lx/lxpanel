@@ -18,13 +18,12 @@ Group:		Graphical desktop/Other
 URL:		http://lxde.sourceforge.net/
 #Source1:	volume_icon.tar.gz
 Patch1:		configure_desktop_number.patch
-#Patch2:		lxpanel-0.5.10-automake1.12.patch
+Patch2:		lxpanel-0.5.12-automake1.13.patch
 #Patch3:		lxpanel-0.5.9-linkage.patch
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(gdk-pixbuf-xlib-2.0)
 BuildRequires:	pkgconfig(libwnck-1.0)
-BuildRequires:	pkgconfig(systemd)
 BuildRequires:	intltool
 BuildRequires:	menu-cache-devel >= 0.2.1
 BuildRequires:	xsltproc
