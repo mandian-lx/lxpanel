@@ -24,6 +24,7 @@ BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(gdk-pixbuf-xlib-2.0)
 BuildRequires:	pkgconfig(libwnck-1.0)
+BuildRequires:	pkgconfig(systemd)
 BuildRequires:	intltool
 BuildRequires:	menu-cache-devel >= 0.2.1
 BuildRequires:	xsltproc
