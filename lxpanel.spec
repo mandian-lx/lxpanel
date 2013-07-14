@@ -4,33 +4,31 @@
 %define gitday 20121312
 
 Summary:	Lightweight X11 desktop panel based on fbpanel
-Name:	  	lxpanel
+Name:		lxpanel
 Release:	1
 %if %git
 Version:	%{ver}.git%{gitday}
 Source0:	%{name}-%{prerel}.tar.gz
 %else
 Version:	%{ver}
-Source0: 	http://dfn.dl.sourceforge.net/sourceforge/lxde/%name-%version.tar.gz
+Source0:	http://dfn.dl.sourceforge.net/sourceforge/lxde/%{name}-%{version}.tar.gz
 %endif
 License:	GPLv2+
 Group:		Graphical desktop/Other
-URL:		http://lxde.sourceforge.net/
+Url:		http://lxde.sourceforge.net/
 #Source1:	volume_icon.tar.gz
 Patch1:		configure_desktop_number.patch
 Patch2:		lxpanel-0.5.12-automake113.patch
-#Patch3:		lxpanel-0.5.9-linkage.patch
-BuildRequires:	pkgconfig(gtk+-2.0)
-BuildRequires:	pkgconfig(alsa)
-BuildRequires:	pkgconfig(gdk-pixbuf-xlib-2.0)
-BuildRequires:	pkgconfig(libwnck-1.0)
-BuildRequires:	intltool
-BuildRequires:	menu-cache-devel >= 0.2.1
-BuildRequires:	xsltproc
 BuildRequires:	docbook-to-man
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-style-xsl
-BuildRequires:	automake
+BuildRequires:	intltool
+BuildRequires:	xsltproc
+BuildRequires:	pkgconfig(alsa)
+BuildRequires:	pkgconfig(gdk-pixbuf-xlib-2.0)
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(libmenu-cache)
+BuildRequires:	pkgconfig(libwnck-1.0)
 Requires:	desktop-common-data
 Requires:	obconf
 Suggests:	pcmanfm
@@ -62,17 +60,17 @@ This package contains development files needed for building lxde plugins.
 
 %prep
 %if %git
-%setup -q -n %{name}-%{prerel} -a1
+%setup -qn %{name}-%{prerel} -a1
 %else
 %setup -q
 %endif
 %apply_patches
+./autogen.sh
 
 %build
-./autogen.sh
 %configure2_5x \
-  --enable-man \
-  --with-plugins="cpu batt kbled xkb thermal deskno volumealsa"
+	--enable-man \
+	--with-plugins="cpu batt kbled xkb thermal deskno volumealsa"
 %make
 
 %install
