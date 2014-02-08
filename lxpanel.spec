@@ -5,7 +5,7 @@
 
 Summary:	Lightweight X11 desktop panel based on fbpanel
 Name:		lxpanel
-Release:	1
+Release:	2
 %if %git
 Version:	%{ver}.git%{gitday}
 Source0:	%{name}-%{prerel}.tar.gz
