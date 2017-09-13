@@ -2,8 +2,8 @@ Description: Add configuration for desktop number for the pager plugin.
 Bug-Debian: http://bugs.debian.org/608421
 Author: Julien Lavergne <gilir@ubuntu.com>
 
---- lxpanel-0.5.6.orig/src/plugins/pager.c
-+++ lxpanel-0.5.6/src/plugins/pager.c
+--- lxpanel-0.5.6.orig/plugins/pager.c
++++ lxpanel-0.5.6/plugins/pager.c
 @@ -775,6 +775,80 @@ static void pager_destructor(Plugin * p)
      g_free(pg);
  }

@@ -1,3 +1,4 @@
-sources:
+removed_sources:
   lxpanel-0.5.12.tar.gz: 26749cbdc22c45d273fef2ecb7fc1223ae4b4c8c
-
+sources:
+  lxpanel-0.9.3.tar.xz: b7fd11267b192efcb87dadd38f96bfc3a4c5f448
