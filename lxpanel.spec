@@ -25,7 +25,7 @@ BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libfm-gtk3)
 BuildRequires:	pkgconfig(libmenu-cache)
 BuildRequires:	pkgconfig(libwnck-3.0)
-BuildRequires:	pkgconfig(keybinder)
+BuildRequires:	pkgconfig(keybinder-3.0)
 BuildRequires:	xsltproc
 
 Requires:	desktop-common-data
