@@ -19,14 +19,14 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-style-xsl
 BuildRequires:	intltool
 BuildRequires:	libiw-devel
-BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(gdk-pixbuf-xlib-2.0)
-BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libfm-gtk)
 BuildRequires:	pkgconfig(libmenu-cache)
 BuildRequires:	pkgconfig(libwnck-1.0)
 BuildRequires:	pkgconfig(keybinder)
+BuildRequires:	xsltproc
 
 Requires:	desktop-common-data
 Requires:	obconf
@@ -123,11 +123,9 @@ This package contains development files needed for building lxde plugins.
 %apply_patches
 
 %build
-#/autogen.sh
-#export CC=gcc
-%configure
-# \
-#	--enable-man \
+%configure \
+	--enable-gtk3=yes \
+	%{nil}
 #	--with-plugins="cpu batt kbled xkb thermal deskno volumealsa"
 %make
 
