@@ -22,9 +22,9 @@ BuildRequires:	libiw-devel
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(gdk-pixbuf-xlib-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
-BuildRequires:	pkgconfig(libfm-gtk)
+BuildRequires:	pkgconfig(libfm-gtk3)
 BuildRequires:	pkgconfig(libmenu-cache)
-BuildRequires:	pkgconfig(libwnck-1.0)
+BuildRequires:	pkgconfig(libwnck-3.0)
 BuildRequires:	pkgconfig(keybinder)
 BuildRequires:	xsltproc
 
